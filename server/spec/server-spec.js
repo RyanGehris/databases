@@ -65,8 +65,10 @@ describe('Persistent Node Chat Server', () => {
 
   it('Should output all messages from the DB', (done) => {
     // Let's insert a message into the db
-    const queryString = 'insert into messages (userid, message, roomid) values (1, "message", 3)';
+    const queryString = 'insert into messages (userid, message, roomname) values (1, "message", "lobby")';
     const queryArgs = [];
+    const message = 'message';
+    const roomname = 'lobby';
     /* TODO: The exact query string and query args to use here
      * depend on the schema you design, so I'll leave them up to you. */
     dbConnection.query(queryString, queryArgs, (err) => {
@@ -78,8 +80,8 @@ describe('Persistent Node Chat Server', () => {
       axios.get(`${API_URL}/messages`)
         .then((response) => {
           const messageLog = response.data;
-          expect(messageLog[0].message).toEqual(message);
-          expect(messageLog[0].roomid).toEqual(roomname);
+          expect(messageLog[1].message).toEqual(message);
+          expect(messageLog[1].roomname).toEqual(roomname);
           done();
         })
         .catch((err) => {
