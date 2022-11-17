@@ -6,9 +6,9 @@ USE chat;
 
 CREATE TABLE messages (
   /* Describe your table here.*/
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL,
-  chatter VARCHAR(1000),
+  message VARCHAR(1000),
   roomid int NOT NULL,
   PRIMARY KEY (id)
 );
@@ -16,13 +16,13 @@ CREATE TABLE messages (
 /* Create other tables and define schemas for them here! */
 
 CREATE TABLE users (
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   username VARCHAR(20),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE rooms (
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   roomname VARCHAR(20),
   PRIMARY KEY (id)
 );
